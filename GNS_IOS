@@ -1,1 +1,32 @@
 https://github.com/hegdepavankumar/Cisco-Images-for-GNS3-and-EVE-NG
+https://www.gns3.com/marketplace/appliances
+
+ASAv 9.8.1 등록 및 설정 순서
+1) ASAv 어플라이언스 템플릿 다운로드
+ 	GNS3 마켓플레이스 웹사이트 또는 구글에 GNS3 ASAv appliance를 검색
+  cisco-asav.gns3a 파일을 다운로드
+
+2) GNS3에서 템플릿 가져오기 (Import)
+ 	GNS3 프로그램을 실행합니다.
+  상단 메뉴에서 File > Import appliance 클릭
+  cisco-asav.gns3a 파일을 선택하고 열기
+  서버 선택 창이 뜨면 Install the appliance on the GNS3 VM (recommended)을 선택 
+  Qemu binary 설정은 기본값으로 두고 Next
+  asav981.qcow2 파일 매칭하기
+
+3) 버전 목록 창이 뜨면 왼쪽 리스트에서 asav9.8.1 또는 버전에 맞는 항목을 찾아 확장
+   하단에 필요한 파일명인 asav981.qcow2가 나타나고 상태가 Missing으로 표시 될것 
+   해당 파일명을 클릭한 후 오른쪽의 Import 버튼 누름 
+   PC에 보유하고 있는 asav981.qcow2 파일을 선택하여 업로드
+   업로드가 완료되면 상태가 Ready to install (초록색)로 변경
+   설치를 진행하겠냐는 팝업 창이 뜨면 Yes를 누르고, 안내 사항을 확인한 후 Finish를 누르면 등록 완료
+
+ 4) ASAv 부팅 및 최초 콘솔 설정 (필수 작업)
+   * ASAv는 등록 후 토폴로지에 올린 뒤 최초 부팅 시 콘솔 연결을 활성화하는 부팅 대기 시간이 있음
+   - GNS3 왼쪽의 보안 장비(Security Devices, 자물쇠 아이콘) 탭에서 방금 등록한 Cisco ASAv를 중앙 화면으로 드래그
+   - 장비를 마우스 우클릭한 후 Start
+   - 우클릭 후 Console을 켜지 
+   -  [중요] 부팅 중 화면에 Use serial console? [y/n] 문구가 나타나면 반드시 y를 입력하고 엔터를 누름 
+            *만약 이 타이밍을 놓치거나 n을 누르면 화면이 멈춘 것처럼 보이고 콘솔 입력이 불가능(이 경우 장비를 Stop 했다가 다시 Start 하여 처음부터 시도)
+   - ciscoasa> 또는 asa> 프롬프트가 뜨면 정상적으로 부팅 및 설정이 완료
+
